@@ -1,14 +1,15 @@
-import React from 'react';
-import Input from './components/Input';
-import './globalStyles/App.css';
+import React from "react";
+import Input from "./components/Input";
+import "./globalStyles/App.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="app-container">
-      <h1>Heading 1</h1>
+    <div className="appContainer">
       <Input />
+
+      <div className="resultContainer">Result</div>
     </div>
   );
-}
+};
 
 export default App;

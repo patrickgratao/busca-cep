@@ -1,0 +1,48 @@
+/* Common */
+.customForm input,
+.customForm button {
+  box-shadow: unset;
+  outline: unset;
+
+  height: 36px;
+  padding: 5px 10px;
+
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.customForm input {
+  background-color: unset;
+  border: 1px solid #c3c3c3;
+  border-right: unset;
+  color: #fff;
+
+  border-radius: 100px 0 0 100px;
+}
+
+.customForm input::placeholder {
+  color: #fff;
+  opacity: 0.4;
+}
+
+.customForm button {
+  border: unset;
+  cursor: pointer;
+
+  height: 48px;
+
+  border-radius: 0 100px 100px 0;
+  width: 70px;
+
+  background-color: #16bac5;
+
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.customForm button:hover {
+  opacity: 0.8;
+
+  transition: all 0.3s;
+}
