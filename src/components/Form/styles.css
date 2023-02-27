@@ -18,6 +18,9 @@
   color: #fff;
 
   border-radius: 100px 0 0 100px;
+
+  width: 30vw;
+  padding: 5px 40px;
 }
 
 .customForm input::placeholder {
