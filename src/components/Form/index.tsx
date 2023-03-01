@@ -3,9 +3,10 @@ import "./styles.css";
 
 interface FormProps {
   handleRenderResult: Function;
+  handleIsLoading: Function;
 }
 
-const Form = ({ handleRenderResult }: FormProps) => {
+const Form = ({ handleRenderResult, handleIsLoading }: FormProps) => {
   const [value, setValue] = useState("");
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -34,7 +35,14 @@ const Form = ({ handleRenderResult }: FormProps) => {
       siafi: "9625",
     };
 
-    return handleRenderResult(data);
+    setLoading(true);
+    handleIsLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      handleIsLoading(false);
+      return handleRenderResult(data);
+    }, 2000);
   };
 
   const handleFetchApi = async () => {
@@ -42,6 +50,7 @@ const Form = ({ handleRenderResult }: FormProps) => {
 
     try {
       setLoading(true);
+      handleIsLoading(true);
 
       const result = await fetch(url).then((response) => response.json());
 
@@ -50,9 +59,11 @@ const Form = ({ handleRenderResult }: FormProps) => {
       }
 
       setLoading(false);
+      handleIsLoading(false);
     } catch (error) {
       handleRenderResult({ erro: true });
       setLoading(false);
+      handleIsLoading(false);
     }
   };
 
@@ -67,6 +78,7 @@ const Form = ({ handleRenderResult }: FormProps) => {
       />
       <button
         onClick={() => handleFetchFakeAPI()}
+        // onClick={handleFetchApi}
         disabled={isLoading}
         className={isLoading ? "buttonLoading" : ""}
       >

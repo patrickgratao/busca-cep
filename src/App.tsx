@@ -19,13 +19,19 @@ interface ResultProps {
 
 const App = () => {
   const [result, setResult] = useState<ResultProps>();
-  console.log(result)
-  const handleRenderResult = (param) => {
-    setResult(param);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const handleRenderResult = (result: ResultProps) => {
+    setResult(result);
+  };
+
+  const handleIsLoading = (loading: boolean) => {
+    console.log("called", loading);
+    setIsLoading(loading);
+    return null;
   };
 
   const ErrorComponent = () => {
-    if (!result?.erro) return;
+    if (!result?.erro || isLoading) return;
     return (
       <div className="errorContainer">
         <span>Something went wrong, try again.</span>
@@ -34,7 +40,7 @@ const App = () => {
   };
 
   const DataComponent = () => {
-    if (!result?.cep) return;
+    if (!result?.cep || isLoading) return;
 
     return (
       <div className="dataContainer">
@@ -81,11 +87,20 @@ const App = () => {
     );
   };
 
+  const Loading = () => {
+    if (isLoading) return <h1>Loading</h1>;
+    return <></>;
+  };
+
   return (
     <div className="appContainer">
-      <Form handleRenderResult={handleRenderResult} />
+      <Form
+        handleRenderResult={handleRenderResult}
+        handleIsLoading={handleIsLoading}
+      />
 
       <div className="resultContainer">
+        <Loading />
         <ErrorComponent />
         <DataComponent />
       </div>
