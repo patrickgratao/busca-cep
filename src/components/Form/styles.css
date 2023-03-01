@@ -1,3 +1,8 @@
+.customForm {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
 /* Common */
 .customForm input,
 .customForm button {
@@ -35,7 +40,7 @@
   height: 48px;
 
   border-radius: 0 100px 100px 0;
-  width: 70px;
+  width: auto;
 
   background-color: #16bac5;
 

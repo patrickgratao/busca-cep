@@ -18,6 +18,25 @@ const Form = ({ handleRenderResult }: FormProps) => {
     return await handleFetchApi();
   };
 
+  const handleFetchFakeAPI = (error = false) => {
+    if (error) {
+      return handleRenderResult({ erro: true });
+    }
+
+    const data = {
+      cep: "75389-125",
+      logradouro: "Rua Lázaro Carvelo Borges",
+      bairro: "Setor Cristina II",
+      localidade: "Trindade",
+      uf: "GO",
+      ibge: "5221403",
+      ddd: "62",
+      siafi: "9625",
+    };
+
+    return handleRenderResult(data);
+  };
+
   const handleFetchApi = async () => {
     const url = `https://viacep.com.br/ws/${value}/json/`;
 
@@ -43,15 +62,15 @@ const Form = ({ handleRenderResult }: FormProps) => {
         type="text"
         value={value}
         onChange={handleChange}
-        placeholder="Type a CEP..."
+        placeholder="Digite um número de CEP"
         onKeyDown={handleEnter}
       />
       <button
-        onClick={handleFetchApi}
+        onClick={() => handleFetchFakeAPI()}
         disabled={isLoading}
         className={isLoading ? "buttonLoading" : ""}
       >
-        {isLoading ? "Loading" : "Go"}
+        {isLoading ? "Loading" : "Buscar"}
       </button>
     </div>
   );

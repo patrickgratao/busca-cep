@@ -19,6 +19,7 @@ interface ResultProps {
 
 const App = () => {
   const [result, setResult] = useState<ResultProps>();
+  console.log(result)
   const handleRenderResult = (param) => {
     setResult(param);
   };
