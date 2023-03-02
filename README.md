@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <!-- <img alt="codeby" src="https://media-exp1.licdn.com/dms/image/C4D1BAQFU9H-HoKAk7A/company-background_10000/0/1617801423153?e=2159024400&v=beta&t=EstTje31xcsB07h9CG6L6U6CFfzk61UEgH7FwRyXhIg" /> -->
+    <br>
+    Busca CEP
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a href="#rocket-visão-geral">Visão geral</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-instalar">Como instalar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-instalar-em-vtex-io">Como instalar em VTEX IO</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#padrões-de-código">Padrões de código</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</p>
 
-## Available Scripts
+## :rocket: Visão Geral
 
-In the project directory, you can run:
+Este sistema utiliza a API do [Via Cep](https://viacep.com.br/) para buscar dados sobre um número de CEP inserido.
 
-### `npm start`
+# Como instalar?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Requisitos Mínimos
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1.  Necessário ter no mínimo o node `14.x`
 
-### `npm test`
+## Instalação
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.  Baixe ou clone este repositório
+2.  Acesse a pasta baixada e instale as dependências com `npm install` ou `yarn install`
+3.  Rode o comando `yarn start`
 
-### `npm run build`
+# Como instalar em VTEX IO
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para utilizar este serviço de buscar cep dentro de uma loja VTEX IO devemos fazer o seguinte:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Declarar o bloco no arquivo `interfaces.json`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Dentro deste arquivo devemos declarar o bloco com o componente que iremos utilizar. 
 
-### `npm run eject`
+Exemplo:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```json
+"busca-cep": {
+    "component": "BuscaCep"
+  }
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Criar o arquivo `BuscaCep` na pasta `react`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Devemos criar o arquivo BuscaCep dentro da pasta react.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+O caminho ficaria: `react/BuscaCep.tsx`
 
-## Learn More
+### 3. Escrever código no arquivo `react/BuscaCep.tsx`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Exemplo: 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```typescript
+import BuscaCep from "./components/BuscaCep";
+
+export default BuscaCep;
+
+```
+
+### 4. Criar a pasta `BuscaCep` dentro da pasta `react/components`
+
+Dentro da pasta BuscaCep iremos colocar os códigos deste app. 
+
+### 5. Chamar o bloco criado em `interfaces.json` onde precisar
+
+Agora podemos utilizar o "snippet" `busca-cep` em qualquer parte da loja VTEX IO.
+
+Ao utilizar o snippet este aplicativo será renderizado.
+
+## Mensagens de Commits
+
+Para commits e branchs estamos utilizando o [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0/) que é composto por três partes.
+
+- Tipo (type) - Obrigatório
+- Escopo (scope) - Opcional
+- Assunto (subject) - Obrigatório
+
+![Padroes de Codigo](./.github/assets/commit-pattern.jpg)
+
+Exemplos:
+
+| Problema que resolve                   | Mensagem de commit            |
+| -------------------------------------- | ----------------------------- |
+| Criar novo slider                      | `feat: create new slider`     |
+| Corrigir bug no product summary        | `fix: bug in product summary` |
+| Refatorar código do slider da homepage | `refactor: homepage slider`   |
+
+## Branchs
+
+As branchs devem ser descritas de acordo com o problema que resolve.
+
+Exemplos:
+
+| Problema que resolve                   | Nome da Branch             |
+| -------------------------------------- | -------------------------- |
+| Criar novo slider                      | `feat/create-new-slider`   |
+| Corrigir bug no product summary        | `fix/bug-product-summary`  |
+| Refatorar código do slider da homepage | `refactor/homepage-slider` |
+
+
+---
+
+Feito com 💗 por [Patrick Gratão](https://linkedin.com/in/patrickgratao/)
