@@ -13,30 +13,4 @@
   border-radius: 10px 0;
 }
 
-.customForm,
-.resultContainer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.resultContainer {
-  margin: 0 1rem;
-}
-
-.resultContainer .dataContainer {
-  width: 100%;
-  border-top: 1px solid #d3d3d3;
-  padding: 1rem;
-  margin: 0 3rem;
-}
-
-.resultContainer .dataContainer .item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  font-size: 16px;
-  line-height: 20px;
-}
+@import "./pdp.css";

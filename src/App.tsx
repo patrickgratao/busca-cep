@@ -18,93 +18,77 @@ interface ResultProps {
 }
 
 const App = () => {
-  const [result, setResult] = useState<ResultProps>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [result, setResult] = useState<ResultProps>({});
   const handleRenderResult = (result: ResultProps) => {
     setResult(result);
   };
 
-  const handleIsLoading = (loading: boolean) => {
-    console.log("called", loading);
-    setIsLoading(loading);
-    return null;
+  const handleClearResult = () => {
+    setResult({});
   };
 
-  const ErrorComponent = () => {
-    if (!result?.erro || isLoading) return;
+  const ErrorResult = () => {
+    if (!result?.erro) return;
     return (
       <div className="errorContainer">
-        <span>Something went wrong, try again.</span>
+        <span>
+          Algo deu errado com este número de CEP, por favor, tente novamente.
+        </span>
       </div>
     );
   };
 
-  const DataComponent = () => {
-    if (!result?.cep || isLoading) return;
+  const SuccessResult = () => {
+    if (!result?.cep) return <></>;
+
+    const formattedText = `${result?.logradouro}, ${result?.bairro}, ${result?.localidade} - ${result.uf}`;
 
     return (
       <div className="dataContainer">
-        <div className="item">
-          <span>CEP: </span>
-          <strong>{result?.cep}</strong>
-        </div>
-
-        <div className="item">
-          <span>Logradouro: </span>
-          <strong>{result?.logradouro}</strong>
-        </div>
-
-        <div className="item">
-          <span>Bairro: </span>
-          <strong>{result?.bairro}</strong>
-        </div>
-
-        <div className="item">
-          <span>Localidade: </span>
-          <strong>{result?.localidade}</strong>
-        </div>
-
-        <div className="item">
-          <span>UF: </span>
-          <strong>{result?.uf}</strong>
-        </div>
-
-        <div className="item">
-          <span>IBGE: </span>
-          <strong>{result?.ibge}</strong>
-        </div>
-
-        <div className="item">
-          <span>DDD: </span>
-          <strong>{result?.ddd}</strong>
-        </div>
-
-        <div className="item">
-          <span>Siafi: </span>
-          <strong>{result?.siafi}</strong>
-        </div>
+        <span>Este produto será entregue em: </span>
+        <div className="addressContainer">{formattedText}</div>
       </div>
     );
   };
 
-  const Loading = () => {
-    if (isLoading) return <h1>Loading</h1>;
-    return <></>;
-  };
-
   return (
-    <div className="appContainer">
-      <Form
-        handleRenderResult={handleRenderResult}
-        handleIsLoading={handleIsLoading}
-      />
+    <>
+      <div className="productPageContainer">
+        <div className="productImageContainer">
+          <img
+            src="https://images.tcdn.com.br/img/img_prod/769517/t_shirt_nike_essntl_icon_20685_1_ad613c9da7e914cb1d637fa13a4eef28.jpg"
+            alt="product"
+          />
+        </div>
 
-      <div className="resultContainer">
-        <Loading />
-        <ErrorComponent />
-        <DataComponent />
+        <div className="productDetailsContainer">
+          <h1>Nike T-Shirt</h1>
+          <div className="modelId">Modelo: BV6169010</div>
+          <div className="description">
+            Para arrasar no look desde o sportwear até o mood casual, a melhor
+            aposte é nessa tshirt da Nike!
+          </div>
+
+          <div className="price">
+            <span className="labelPrice">Por:</span>
+            <span className="valuePrice">R$ 149,90</span>
+          </div>
+
+          <div className="cepContainer">
+            <div className="labelCepContainer">Simulador de Entrega</div>
+            <Form
+              handleRenderResult={handleRenderResult}
+              handleClearResult={handleClearResult}
+            />
+          </div>
+
+          <div className="resultContainer">
+            <ErrorResult />
+            <SuccessResult />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

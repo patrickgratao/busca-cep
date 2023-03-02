@@ -1,6 +1,6 @@
 .customForm {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin: 1rem auto 1.5rem;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Common */
@@ -20,16 +20,17 @@
   background-color: unset;
   border: 1px solid #c3c3c3;
   border-right: unset;
-  color: #fff;
+  color: #222;
+  font-family: "Poppins", sans-serif;
 
-  border-radius: 100px 0 0 100px;
+  border-radius: 8px 0 0 8px;
 
-  width: 30vw;
-  padding: 5px 40px;
+  width: 40%;
+  padding: 5px 15px;
 }
 
 .customForm input::placeholder {
-  color: #fff;
+  color: #222;
   opacity: 0.4;
 }
 
@@ -39,18 +40,44 @@
 
   height: 48px;
 
-  border-radius: 0 100px 100px 0;
-  width: auto;
+  border-radius: 0 8px 8px 0;
+  width: 18%;
 
-  background-color: #16bac5;
+  background-color: #222;
 
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .customForm button:hover {
-  opacity: 0.8;
+  opacity: 0.95;
 
   transition: all 0.3s;
+}
+
+.customForm button[disabled] {
+  cursor: not-allowed;
+  pointer-events: unset;
+}
+
+.customForm .buttonLoading {
+  display: flex;
+}
+
+/* Loader */
+@import "./loader.css";
+
+@media screen and (max-width: 1026px) {
+  .customForm input {
+    width: 100%;
+  }
+
+  .customForm button {
+    width: 45%;
+  }
 }

@@ -1,0 +1,113 @@
+/* NEW CSS */
+
+.productPageContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+
+  padding: 4rem 10rem;
+}
+
+.productPageContainer .productImageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 65vh;
+  height: auto;
+}
+
+.productPageContainer .productImageContainer img {
+  max-height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.productPageContainer .productDetailsContainer h1 {
+  margin: 0 0 1rem;
+
+  font-size: 45px;
+  line-height: 55px;
+}
+
+.productPageContainer .productDetailsContainer .modelId,
+.productPageContainer .productDetailsContainer .description,
+.productPageContainer .productDetailsContainer .price {
+  margin-bottom: 1rem;
+  color: #525252;
+}
+
+.productPageContainer .productDetailsContainer .description {
+  color: #000;
+}
+
+.productPageContainer .productDetailsContainer .price {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.productPageContainer .productDetailsContainer .price .valuePrice {
+  font-size: 32px;
+  line-height: 40px;
+  color: #000;
+  font-weight: 700;
+}
+
+.cepContainer {
+  margin-top: 2rem;
+}
+
+/* Form / result container */
+.customForm,
+.resultContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.resultContainer {
+  margin: 0;
+}
+
+.resultContainer .dataContainer {
+  width: 100%;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid #f3eded;
+
+  font-weight: 500;
+}
+
+.resultContainer .loaderContainer {
+  padding: 0 5rem;
+}
+
+.dataContainer .addressContainer {
+  background-color: #efebeb;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 1025px) {
+  .productPageContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .productPageContainer .productDetailsContainer {
+    padding: 0 1rem;
+  }
+
+  .productPageContainer .productDetailsContainer h1 {
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  .productDetailsContainer {
+    margin-bottom: 1rem;
+  }
+}

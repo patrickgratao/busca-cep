@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles.css";
 
 interface FormProps {
   handleRenderResult: Function;
-  handleIsLoading: Function;
+  handleClearResult: Function;
 }
 
-const Form = ({ handleRenderResult, handleIsLoading }: FormProps) => {
+const Form = ({ handleRenderResult, handleClearResult }: FormProps) => {
   const [value, setValue] = useState("");
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -20,8 +20,11 @@ const Form = ({ handleRenderResult, handleIsLoading }: FormProps) => {
   };
 
   const handleFetchFakeAPI = (error = false) => {
+    handleClearResult()
     if (error) {
-      return handleRenderResult({ erro: true });
+      setTimeout(() => {
+        return handleRenderResult({ erro: true });
+      }, 2000);
     }
 
     const data = {
@@ -36,21 +39,20 @@ const Form = ({ handleRenderResult, handleIsLoading }: FormProps) => {
     };
 
     setLoading(true);
-    handleIsLoading(true);
 
     setTimeout(() => {
       setLoading(false);
-      handleIsLoading(false);
+
       return handleRenderResult(data);
     }, 2000);
   };
 
   const handleFetchApi = async () => {
+    handleClearResult()
     const url = `https://viacep.com.br/ws/${value}/json/`;
 
     try {
       setLoading(true);
-      handleIsLoading(true);
 
       const result = await fetch(url).then((response) => response.json());
 
@@ -59,11 +61,9 @@ const Form = ({ handleRenderResult, handleIsLoading }: FormProps) => {
       }
 
       setLoading(false);
-      handleIsLoading(false);
     } catch (error) {
       handleRenderResult({ erro: true });
       setLoading(false);
-      handleIsLoading(false);
     }
   };
 
@@ -77,12 +77,12 @@ const Form = ({ handleRenderResult, handleIsLoading }: FormProps) => {
         onKeyDown={handleEnter}
       />
       <button
-        onClick={() => handleFetchFakeAPI()}
+        onClick={() => handleFetchFakeAPI(true)}
         // onClick={handleFetchApi}
         disabled={isLoading}
         className={isLoading ? "buttonLoading" : ""}
       >
-        {isLoading ? "Loading" : "Buscar"}
+        {isLoading ? <div className="loader-small"></div> : "Buscar"}
       </button>
     </div>
   );
