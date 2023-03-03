@@ -21,6 +21,20 @@ const App = () => {
   const [result, setResult] = useState<ResultProps>({});
   const handleRenderResult = (result: ResultProps) => {
     setResult(result);
+
+    // Mobile devices
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
+    if (isMobile) {
+      window.scrollTo({
+        left: 0,
+        top: document?.body?.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   const handleClearResult = () => {
