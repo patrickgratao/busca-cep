@@ -16,7 +16,7 @@
   inset: -7px;
   border-radius: 50%;
   border: 7px solid #222;
-  animation: prixClipFix 1s infinite linear;
+  animation: prixClipFix 0.5s infinite linear;
 }
 
 .loader-small {

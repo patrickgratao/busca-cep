@@ -11,7 +11,12 @@ const Form = ({ handleRenderResult, handleClearResult }: FormProps) => {
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const handleChange = (event) => {
-    return setValue(event.target.value);
+    const cepWithMask = event.target.value
+      .replace(/\D+/g, "")
+      .replace(/(\d{5})(\d)/, "$1-$2")
+      .replace(/(-\d{3})\d+?$/, "$1");
+
+    return setValue(cepWithMask);
   };
 
   const handleEnter = async (event) => {
@@ -19,36 +24,9 @@ const Form = ({ handleRenderResult, handleClearResult }: FormProps) => {
     return await handleFetchApi();
   };
 
-  const handleFetchFakeAPI = (error = false) => {
-    handleClearResult()
-    if (error) {
-      setTimeout(() => {
-        return handleRenderResult({ erro: true });
-      }, 2000);
-    }
-
-    const data = {
-      cep: "75389-125",
-      logradouro: "Rua Lázaro Carvelo Borges",
-      bairro: "Setor Cristina II",
-      localidade: "Trindade",
-      uf: "GO",
-      ibge: "5221403",
-      ddd: "62",
-      siafi: "9625",
-    };
-
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-
-      return handleRenderResult(data);
-    }, 2000);
-  };
-
   const handleFetchApi = async () => {
-    handleClearResult()
+
+    handleClearResult();
     const url = `https://viacep.com.br/ws/${value}/json/`;
 
     try {
@@ -77,8 +55,7 @@ const Form = ({ handleRenderResult, handleClearResult }: FormProps) => {
         onKeyDown={handleEnter}
       />
       <button
-        onClick={() => handleFetchFakeAPI(true)}
-        // onClick={handleFetchApi}
+        onClick={handleFetchApi}
         disabled={isLoading}
         className={isLoading ? "buttonLoading" : ""}
       >
