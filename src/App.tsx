@@ -80,8 +80,7 @@ const App = () => {
           <h1>Nike T-Shirt</h1>
           <div className="modelId">Modelo: BV6169010</div>
           <div className="description">
-            Para arrasar no look desde o sportwear até o mood casual, a melhor
-            aposte é nessa tshirt da Nike!
+            Para arrasar no look desde o sportwear até o mood casual, a melhor aposta é esta tshirt da Nike!
           </div>
 
           <div className="price">
