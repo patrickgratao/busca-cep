@@ -1,7 +1,7 @@
 <h1 align="center">
-    <!-- <img alt="codeby" src="https://media-exp1.licdn.com/dms/image/C4D1BAQFU9H-HoKAk7A/company-background_10000/0/1617801423153?e=2159024400&v=beta&t=EstTje31xcsB07h9CG6L6U6CFfzk61UEgH7FwRyXhIg" /> -->
+    <img alt="codeby" src="https://www.edigitalagency.com.au/wp-content/uploads/just-do-it.-nike-logo-icon-white-text-black-background-750x278.png" />
     <br>
-    Busca CEP
+    Nike PDP
 </h1>
 
 <p align="center">
@@ -11,10 +11,20 @@
   <a href="#padrões-de-código">Padrões de código</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
-## :rocket: Visão Geral
+# :rocket: Visão Geral
 
 Este sistema utiliza a API do [Via Cep](https://viacep.com.br/) para buscar dados sobre um número de CEP inserido.
 
+## Acesse online
+
+- https://patrickgratao.github.io/nike-pdp/
+
+## Desktop
+
+![Desktop](./.github/screenshots/desktop.png)
+## Mobile
+
+![Mobile](./.github/screenshots/mobile.png)
 # Como instalar?
 
 ## Requisitos Mínimos
@@ -29,7 +39,7 @@ Este sistema utiliza a API do [Via Cep](https://viacep.com.br/) para buscar dado
 
 # Como instalar em VTEX IO
 
-Para utilizar este serviço de buscar cep dentro de uma loja VTEX IO devemos fazer o seguinte:
+Para utilizar um serviço parecido com este dentro de uma loja VTEX IO devemos fazer o seguinte:
 
 ### 1. Declarar o bloco no arquivo `interfaces.json`
 
@@ -38,35 +48,35 @@ Dentro deste arquivo devemos declarar o bloco com o componente que iremos utiliz
 Exemplo:
 
 ```json
-"busca-cep": {
-    "component": "BuscaCep"
+"nike-pdp": {
+    "component": "NikePDP"
   }
 ```
 
-### 2. Criar o arquivo `BuscaCep` na pasta `react`
+### 2. Criar o arquivo `NikePDP` na pasta `react`
 
-Devemos criar o arquivo BuscaCep dentro da pasta react.
+Devemos criar o arquivo NikePDP dentro da pasta react.
 
-O caminho ficaria: `react/BuscaCep.tsx`
+O caminho ficaria: `react/NikePDP.tsx`
 
-### 3. Escrever código no arquivo `react/BuscaCep.tsx`
+### 3. Escrever código no arquivo `react/NikePDP.tsx`
 
 Exemplo: 
 
 ```typescript
-import BuscaCep from "./components/BuscaCep";
+import NikePDP from "./components/NikePDP";
 
-export default BuscaCep;
+export default NikePDP;
 
 ```
 
-### 4. Criar a pasta `BuscaCep` dentro da pasta `react/components`
+### 4. Criar a pasta `NikePDP` dentro da pasta `react/components`
 
-Dentro da pasta BuscaCep iremos colocar os códigos deste app. 
+Dentro da pasta NikePDP iremos colocar os códigos deste app. 
 
 ### 5. Chamar o bloco criado em `interfaces.json` onde precisar
 
-Agora podemos utilizar o "snippet" `busca-cep` em qualquer parte da loja VTEX IO.
+Agora podemos utilizar o "snippet" `nike-pdp` em qualquer parte da loja VTEX IO.
 
 Ao utilizar o snippet este aplicativo será renderizado.
 
